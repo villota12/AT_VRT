@@ -34,6 +34,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: 100px;
         }
         button:hover {
             background-color: rgb(17, 81, 57);
@@ -50,10 +51,11 @@
         }
 
         .b1{
-            width: 70px;
+            width: 100px;
             margin: 5px;
             background-color: rgba(210, 233, 191, 0.43);
             color: black;
+            font-size: 20px;
         }
 
         .b1:hover{
@@ -62,17 +64,20 @@
         }
 
         #p1{
-            font-size: 16px;margin-bottom: 40px;
-
+            font-size: 20px;
+            margin-bottom: 100px;
         }
 
         img{
-            width: 200px;
+            width: 300px;
             height: auto;
+            margin-bottom: 10px;
         }
 
         h2{
             color: rgb(17, 81, 57);
+            font-size: 50px;
+            margin: 0px;
         }
     </style>
 </head>
@@ -80,7 +85,7 @@
     <div class="container" id="startContainer">
         <img src="/P1.png" alt="women">
         <h2>Welcome to AccounThink</h2>
-        <p id="p1">Sign up now and experience a smarter way to handle accounting!</p>
+        <p id="p1">Sign up now and experience a<br>smarter way to handle accounting!</p>
         <button class="b1" onclick="showLogin()">Login</button>
         <button class="b1" onclick="showSignup()">Sign Up</button>
     </div>
