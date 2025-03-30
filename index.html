@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Authentication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: rgba(210, 233, 191, 0.43);
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(17, 81, 57);
+            color: white;
+        }
+        .link {
+            margin-top: 10px;
+            color: rgb(17, 81, 57);
+            cursor: pointer;
+        }
+
+        #startContainer {
+            flex-wrap: nowrap;
+        }
+
+        .b1{
+            width: 70px;
+            margin: 5px;
+            background-color: rgba(210, 233, 191, 0.43);
+            color: black;
+        }
+
+        .b1:hover{
+            background-color: rgb(17, 81, 57);
+            color: white;
+        }
+
+        #p1{
+            font-size: 16px;margin-bottom: 40px;
+
+        }
+
+        img{
+            width: 200px;
+            height: auto;
+        }
+
+        h2{
+            color: rgb(17, 81, 57);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="startContainer">
+        <img src="/P1.png" alt="women">
+        <h2>Welcome to AccounThink</h2>
+        <p id="p1">Sign up now and experience a smarter way to handle accounting!</p>
+        <button class="b1" onclick="showLogin()">Login</button>
+        <button class="b1" onclick="showSignup()">Sign Up</button>
+    </div>
+
+    <div class="container" id="signupContainer" style="display: none;">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUser" placeholder="Username">
+        <input type="email" id="signupEmail" placeholder="Email">
+        <input type="password" id="signupPass" placeholder="Password">
+        <button onclick="signUp()">Sign Up</button>
+        <p class="link" onclick="showLogin()">Already have an account? Login</p>
+    </div>
+
+    <div class="container" id="loginContainer" style="display: none;">
+        <h2>Login</h2>
+        <input type="text" id="loginUser" placeholder="Username or Email">
+        <input type="password" id="loginPass" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p class="link" onclick="showSignup()">Don't have an account? Sign Up</p>
+    </div>
+
+    <script>
+        let users = {};
+
+        function signUp() {
+            const username = document.getElementById('signupUser').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPass').value;
+
+            if (username && email && password) {
+                users[username] = { email, password };
+                showLogin();
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function login() {
+            const usernameOrEmail = document.getElementById('loginUser').value;
+            const password = document.getElementById('loginPass').value;
+            
+            let found = false;
+            for (let user in users) {
+                if ((user === usernameOrEmail || users[user].email === usernameOrEmail) && users[user].password === password) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                window.location.href = 'https://villota12.github.io/AT/';
+            } else {
+                alert('Invalid credentials!');
+            }
+        }
+
+        function showLogin() {
+            document.getElementById('startContainer').style.display = 'none';
+            document.getElementById('signupContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+        }
+
+        function showSignup() {
+            document.getElementById('startContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('signupContainer').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
